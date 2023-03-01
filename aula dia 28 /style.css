@@ -1,0 +1,43 @@
+
+div{
+    /* borda*/
+    border: 1px solid black;
+    /* altura*/
+    height: 300px;
+    /* largura*/
+    width: 500px;
+}
+#quadrado1{
+    background-color:yellow;
+    /* espaçamento externo */
+    margin-left:50px ;
+    margin-bottom: 10px ;
+    /*espaçamento interno */
+    padding-top:20px ;
+    /*mudar a fonte de um texto*/
+    font-family: Arial, Helvetica, sans-serif;
+    /*mudar o tamanho da fonte*/
+    font-size: 20px;
+    /* deixar ela mais grossa */
+    font-weight: bold;
+    /* sumbliar um texto*/
+    text-decoration: underline;
+    /* fazer o italico*/
+    font-style: italic;
+    /*orientação do texto */
+    text-align: center;
+    /*ocultar essa div
+    display: none;*/
+    
+
+}
+#quadrado2{
+    background-image:url(https://logodetimes.com/wp-content/uploads/botafogo.png);
+    /*não repetir a imagem*/
+    background-repeat: no-repeat;
+    /*imagem ocupa a tela toda */
+    background-size: contain;
+    /*botar a imagem centralizada*/
+    background-position: center;
+    width: 1000px;
+    height: 1000px;}
