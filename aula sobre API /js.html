@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>estudo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <input type="number" id="cep" placeholder="Digite seu CEP">
-   <BUTTON onclick="pesquisarCep()">pesquisar </BUTTON>
-  
-    <table id="listagem">
+<h1>Digite seu cep para saber mais informações </h1>
+    <div id="mandarCep"></div>
+        <input type="number" id="cep" placeholder="Digite seu CEP">
+        <BUTTON onclick="pesquisarCep()"class="btn btn-secondary btn-lg" >pesquisar </BUTTON>
+        
+    </div>
+    <!-- beforeBegin -->
+    <table id="listagem" class="table">
+    <!-- afterBegin -->
         <tr>
             <th>CEP</th> 
             <TH>logradouro</TH>
@@ -20,35 +26,37 @@
             <th>cidade</th>
             <th>Estado</th>
         </tr>
-
-        <tr>
-            <td id="cepResp"></td>
-            <td id="logradouro"></td>
-            <td id="complemento"></td>
-            <td id="bairro"></td>
-            <td id="cidade"></td>
-            <td id="estado"></td>
-        </tr>
+<!-- beforeEnd -->
     </table>
+    <!-- afterEnd -->
     <script>
+        
         function pesquisarCep(){
             // para chamar um DOM usar 'document'
             var cep = document.querySelector("#cep").value
             
             // como fazer uma requisição de API 
-            // fetch(`https://viacep.com.br/ws/${cep}/json/` )
-            fetch("https://viacep.com.br/ws/"+ cep + "/json/" )
+            fetch(`https://viacep.com.br/ws/${cep}/json/` )
+            // fetch("https://viacep.com.br/ws/"+ cep + "/json/" )
 
             .then(response => response.json())
             .then(response => {
                 // para preencher as informações 
-                document.querySelector('#cepResp').innerText=response.cep
-                document.querySelector('#logradouro').innerText= response.logradouro
-                document.querySelector('#complemento').innerText=response.complemento
-                document.querySelector('#bairro').innerText = response.bairro
-                document.querySelector('#cidade').innerHTML = response.localidade
-                document.querySelector('#estado').innerHTML = response.uf
-
+                document.querySelector('#listagem')
+                .insertAdjacentHTML('beforeEnd',`
+                
+        <tr>
+            <td>${response.cep}</td> 
+            <td>${response.logradouro}</td>
+            <td>${response.complemento}</td>
+            <td>${response.bairro}</td>
+            <td>${response.localidade}</td>
+            <td>${response.uf}</td>
+        </tr>
+                
+                
+                `)
+    
             })
             
         }
